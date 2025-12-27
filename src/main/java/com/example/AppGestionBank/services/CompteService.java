@@ -1,7 +1,6 @@
 package com.example.AppGestionBank.services;
 
 import com.example.AppGestionBank.dto.*;
-import com.example.AppGestionBank.entities.CompteBancaire;
 import com.example.AppGestionBank.exceptions.CompteBancaireNotFoundException;
 import com.example.AppGestionBank.exceptions.CompteSuspendedException;
 import com.example.AppGestionBank.exceptions.MontantNotSufficientException;

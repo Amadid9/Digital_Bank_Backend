@@ -6,7 +6,6 @@ import com.example.AppGestionBank.exceptions.CompteSuspendedException;
 import com.example.AppGestionBank.exceptions.MontantNotSufficientException;
 import com.example.AppGestionBank.services.CompteService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

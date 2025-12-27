@@ -38,13 +38,13 @@ public class SecurityConfig {
 
         UserDetails admin = User.builder()
                 .username("admin")
-                .password(encoder.encode("admin123"))
+                .password(encoder.encode("admin"))
                 .roles("ADMIN")
                 .build();
 
         UserDetails employee = User.builder()
-                .username("employee")
-                .password(encoder.encode("emp123"))
+                .username("user")
+                .password(encoder.encode("user"))
                 .roles("EMPLOYEE")
                 .build();
 

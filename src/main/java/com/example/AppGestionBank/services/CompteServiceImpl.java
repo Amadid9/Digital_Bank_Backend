@@ -1,16 +1,15 @@
 package com.example.AppGestionBank.services;
 
 import com.example.AppGestionBank.dto.*;
+import com.example.AppGestionBank.dto.CompteCourantRequest;
 import com.example.AppGestionBank.entities.*;
 import com.example.AppGestionBank.entities.enums.StatCompte;
 import com.example.AppGestionBank.entities.enums.TypeOp;
-import com.example.AppGestionBank.exceptions.CompteAlreadyExistsException;
 import com.example.AppGestionBank.exceptions.CompteBancaireNotFoundException;
 import com.example.AppGestionBank.exceptions.CompteSuspendedException;
 import com.example.AppGestionBank.exceptions.MontantNotSufficientException;
 import com.example.AppGestionBank.repositories.*;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +38,7 @@ public class CompteServiceImpl implements CompteService {
             throw new CompteAlreadyExistsException("Ce compte existe déjà.");
         }*/
 
-        CompteCourant cc = new CompteCourant();
+        com.example.AppGestionBank.entities.CompteCourant cc = new com.example.AppGestionBank.entities.CompteCourant();
         //cc.setId(request.getId());
         cc.setId(UUID.randomUUID().toString());
         cc.setClient(client);
@@ -159,7 +158,7 @@ public class CompteServiceImpl implements CompteService {
             }
         }
 
-        if (compte instanceof CompteCourant courant) {
+        if (compte instanceof com.example.AppGestionBank.entities.CompteCourant courant) {
             if (nouveauSolde < -courant.getDecouvert()) {
                 throw new MontantNotSufficientException(
                         "Dépassement du découvert autorisé (" + courant.getDecouvert() + ")"
@@ -225,9 +224,9 @@ public class CompteServiceImpl implements CompteService {
                 compte.getClient() != null ? compte.getClient().getId() : null
         );
 
-        if (compte instanceof CompteCourant) {
+        if (compte instanceof com.example.AppGestionBank.entities.CompteCourant) {
             resp.setType("COURANT");
-            CompteCourant courant = (CompteCourant) compte;
+            com.example.AppGestionBank.entities.CompteCourant courant = (com.example.AppGestionBank.entities.CompteCourant) compte;
             resp.setDecouvert(courant.getDecouvert());
         } else if (compte instanceof CompteEpargne) {
             resp.setType("EPARGNE");
